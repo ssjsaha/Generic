@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">GenericApp</string>
     <string name="celebrate">Celebrate!</string>
+    <string name="see_balloons">See Balloons</string>
+    <string name="happy_birthday_monuku">Happy Birthday Bunuku Shona! I know things are not like you expected now. But I promise it will be better in no time! Because I said so!\n Dadaku loves you the most ❤️</string>
+    <string name="see_your_face">I don\'t know when but I want to see this innocent smile :(  Dadaku misses you</string>
+    <string name="finish">Finish!</string>
+    <string name="end">End</string>
 </resources>

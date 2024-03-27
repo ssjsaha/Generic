@@ -19,6 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -35,7 +39,9 @@ import com.example.genericapp.feature_Launcher.presentation.LauncherUIEvent
 import com.example.genericapp.feature_Launcher.presentation.LauncherUiState
 import com.example.genericapp.ui.theme.Purple80
 import com.example.genericapp.ui.theme.lightCyan
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 @Composable
 fun StarterComposables(
@@ -44,10 +50,18 @@ fun StarterComposables(
     state: StateFlow<LauncherUiState>,
     controller: NavHostController
 ) {
-    var uiState = state.collectAsState()
+    val scope = rememberCoroutineScope()
+    val uiState = state.collectAsState()
+    var isEnabled by remember {
+        mutableStateOf(false)
+    }
+    LaunchedEffect(key1 = Unit) {
+        delay(3000)
+        isEnabled = true
+    }
     if (uiState.value.navigate) {
         LaunchedEffect(key1 = Unit) {
-            controller.navigate("Main")
+            controller.navigate("main")
 
         }
     } else {
@@ -93,14 +107,14 @@ fun StarterComposables(
                 OutlinedButton(
                     border = BorderStroke(1.dp, Color.Blue), // Border stroke with 1dp width
                     shape = RoundedCornerShape(16.dp), // 16dp rounded corners
+                    enabled = isEnabled,
                     modifier = Modifier
                         .padding(8.dp)
                         .fillMaxWidth(0.8f), // Add padding as needed
                     onClick = {
                         onEvent.invoke(LauncherUIEvent.NavigateToMainScreen)
                     }) {
-                    Text(text = stringResource(id = R.string.celebrate))
-
+                    Text(text = stringResource(id = R.string.see_balloons))
                 }
             }
 

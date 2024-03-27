@@ -23,6 +23,10 @@ class MainViewModel : ViewModel() {
                 start = true,
                 ballonNumber = 1
             )
+            delay(10000)
+            _mainUiState.value = _mainUiState.value.copy(
+                showButton = true
+            )
         }
     }
 
