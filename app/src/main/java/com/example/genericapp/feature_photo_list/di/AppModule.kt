@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -17,10 +18,11 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Api {
-        /*val moshi = Moshi.Builder().add(MoshiConverterFactory.create()).build()
+        val moshi = Moshi.Builder().build()
         return Retrofit.Builder()
             .baseUrl("https://picsum.photos/")
-            .addConverterFactory(moshi)
-            .build().create()*/
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create()
     }
 }
