@@ -2,6 +2,7 @@ package com.example.genericapp.feature_photo_list.di
 
 import com.example.genericapp.feature_photo_list.data.Api
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Api {
-        val moshi = Moshi.Builder().build()
+        val moshi = Moshi
+            .Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
         return Retrofit.Builder()
             .baseUrl("https://picsum.photos/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
