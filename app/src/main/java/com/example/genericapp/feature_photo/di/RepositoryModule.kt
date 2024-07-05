@@ -1,7 +1,7 @@
-package com.example.genericapp.feature_photo_list.di
+package com.example.genericapp.feature_photo.di
 
-import com.example.genericapp.feature_photo_list.data.repositores.PhotoListRepositoryImpl
-import com.example.genericapp.feature_photo_list.domain.repositories.PhotoListRepository
+import com.example.genericapp.feature_photo.data.repositores.PhotoListRepositoryImpl
+import com.example.genericapp.feature_photo.domain.repositories.PhotoListRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

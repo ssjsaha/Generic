@@ -1,4 +1,4 @@
-package com.example.genericapp.feature_photo_list.utils
+package com.example.genericapp.feature_photo.utils
 
 
 sealed class Resource<T>(val data: T? = null, val message: String = "") {

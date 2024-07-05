@@ -1,13 +1,14 @@
-package com.example.genericapp.feature_photo_list.presentation
+package com.example.genericapp.feature_photo.presentation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
+import com.example.genericapp.feature_photo.presentation.composables.PhotoDetailsComposable
+import com.example.genericapp.feature_photo.presentation.composables.PhotoListComposable
+import com.example.genericapp.feature_photo.presentation.viewmodels.PhotoListViewModel
 
 
 @Composable
@@ -21,16 +22,15 @@ fun PhotoPageNavigation() {
                 route = "photo_list_page"
             ) {
                 composable(route = "list_of_photos") {
-                    PhotoListComposable(uiStateFlow = viewModel.uiStateFlow) {
-                        when (it) {
-                            is PhotoListPageUiEvent.NavigateToPhotoDetails -> {
-                                navController.navigate("photo_details")
-                            }
-                        }
+                    PhotoListComposable(
+                        uiStateFlow = viewModel.uiStateFlow,
+                        onEvent = viewModel::onEvent,
+                    ) {
+                        navController.navigate("photo_details")
                     }
                 }
                 composable(route = "photo_details") {
-                    Text(text = "balsal")
+                    PhotoDetailsComposable(uiState = viewModel.photoDetailsUiState)
                 }
             }
         }

@@ -1,9 +1,9 @@
-package com.example.genericapp.feature_photo_list.data.repositores
+package com.example.genericapp.feature_photo.data.repositores
 
-import com.example.genericapp.feature_photo_list.data.Api
-import com.example.genericapp.feature_photo_list.domain.models.PhotoObject
-import com.example.genericapp.feature_photo_list.domain.repositories.PhotoListRepository
-import com.example.genericapp.feature_photo_list.utils.Resource
+import com.example.genericapp.feature_photo.data.Api
+import com.example.genericapp.feature_photo.domain.models.PhotoObject
+import com.example.genericapp.feature_photo.domain.repositories.PhotoListRepository
+import com.example.genericapp.feature_photo.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.example.genericapp.feature_photo_list.domain.models
+package com.example.genericapp.feature_photo.domain.models
 
 import com.squareup.moshi.Json
 

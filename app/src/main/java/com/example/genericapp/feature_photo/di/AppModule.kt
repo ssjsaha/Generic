@@ -1,11 +1,14 @@
-package com.example.genericapp.feature_photo_list.di
+package com.example.genericapp.feature_photo.di
 
-import com.example.genericapp.feature_photo_list.data.Api
+import android.content.Context
+import android.util.DisplayMetrics
+import com.example.genericapp.feature_photo.data.Api
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -29,4 +32,10 @@ object AppModule {
             .build()
             .create()
     }
+
+    @Provides
+    @Singleton
+    fun provideDisplayMetrics(@ApplicationContext context: Context) =
+        context.resources.displayMetrics
+
 }
