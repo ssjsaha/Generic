@@ -1,7 +1,6 @@
 package com.example.genericapp.feature_photo.presentation.composables
 
 
-import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition

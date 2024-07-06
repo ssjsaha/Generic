@@ -1,5 +1,6 @@
 package com.example.genericapp.feature_photo.presentation.composables
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,23 +24,24 @@ import kotlin.random.Random
 
 @Composable
 fun PhotoListItem(title: String, onClick: () -> Unit) {
-    val randomColor by rememberSaveable {
-        mutableLongStateOf(Random.nextLong(0xFFFFFFFF))
-    }
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(150.dp)
             .clickable {
                 onClick()
             }
-            .background(Color(randomColor))
-            .padding(8.dp) // padding inside the border
+            .padding(10.dp)
+            .border(
+                border = BorderStroke(1.dp, Color.Gray), // Border width and color
+            )
+    // padding inside the border
     ) {
         Text(
+            modifier = Modifier.padding(20.dp),
             text = title,
             fontSize = 18.sp,
             color = MaterialTheme.colorScheme.onBackground
         )
+
     }
 }

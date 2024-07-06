@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -54,6 +54,7 @@ fun PhotoDetailsComposable(
     val snackbarHostState by remember {
         mutableStateOf(SnackbarHostState())
     }
+
     Scaffold(
 
         snackbarHost = {
@@ -64,7 +65,7 @@ fun PhotoDetailsComposable(
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Back"
                         )
                     }
@@ -79,9 +80,10 @@ fun PhotoDetailsComposable(
         }) { padding ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .padding(padding)
-                .verticalScroll(rememberScrollState()),
+                .fillMaxSize()
+                .verticalScroll(state = rememberScrollState())
+            ,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = if (uiComposableState.value.isLandscape) {
                 Arrangement.Center
@@ -93,9 +95,7 @@ fun PhotoDetailsComposable(
                 model = uiComposableState.value.photoUrl,
                 contentDescription = "photo",
                 loading = {
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        ImageDetailsShimmerLoader()
-                    }
+                    imageLoadVerdict = ImageLoadVerdict.LOADING
                 },
                 error = {
                     Image(
@@ -113,12 +113,17 @@ fun PhotoDetailsComposable(
                         text = it,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(20.dp, 20.dp, 20.dp, 0.dp)
+                            .padding(20.dp, 20.dp, 20.dp, 20.dp)
                     )
                 }
 
             }
 
+        }
+        if(imageLoadVerdict == ImageLoadVerdict.LOADING) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                ImageDetailsShimmerLoader()
+            }
         }
     }
 
