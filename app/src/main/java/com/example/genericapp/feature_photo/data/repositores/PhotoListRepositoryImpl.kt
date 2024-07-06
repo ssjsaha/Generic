@@ -1,5 +1,6 @@
 package com.example.genericapp.feature_photo.data.repositores
 
+import android.util.Range
 import com.example.genericapp.feature_photo.data.Api
 import com.example.genericapp.feature_photo.domain.models.PhotoObject
 import com.example.genericapp.feature_photo.domain.repositories.PhotoListRepository
@@ -17,13 +18,17 @@ class PhotoListRepositoryImpl @Inject constructor(private val api: Api) : PhotoL
             if (res.isSuccessful) {
                 emit(Resource.Success(res.body()))
             } else {
-                emit(Resource.Error(res.errorBody()?.string() ?: "Something went wrong"))
+                if (res.code() == 400) {
+                    emit(Resource.Error("Bad Request"))
+                } else if (res.code() == 404) {
+                    emit(Resource.Error("Image Not Found"))
+                } else if (res.code() in 500..599) {
+                    emit(Resource.Error("Internal Server Error"))
+                } else {
+                    emit(Resource.Error("Something went wrong"))
+                }
             }
         } catch (e: Exception) {
-            ///todo///
-            /*
-            handle network exception, no network issue separately
-            * */
             emit(Resource.Error(e.message ?: "Something went wrong"))
         }
 

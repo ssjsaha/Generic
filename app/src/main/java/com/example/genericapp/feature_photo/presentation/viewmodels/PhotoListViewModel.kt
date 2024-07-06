@@ -2,6 +2,7 @@ package com.example.genericapp.feature_photo.presentation.viewmodels
 
 import android.graphics.Point
 import android.util.DisplayMetrics
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genericapp.BuildConfig
@@ -67,6 +68,7 @@ class PhotoListViewModel @Inject constructor(
     }
 
 
+    @VisibleForTesting
     fun isLandscape(width: Long, height: Long) = width > height
 
     fun getPhotoHeightAccordingToDevice(width: Long, height: Long): Point {
