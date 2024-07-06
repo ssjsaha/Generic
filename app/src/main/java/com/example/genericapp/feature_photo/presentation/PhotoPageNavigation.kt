@@ -28,7 +28,11 @@ fun PhotoPageNavigation() {
                     SplashComposable()
                     LaunchedEffect(key1 = true) {
                         delay(2000)
-                        navController.navigate("list_of_photos")
+                        navController.navigate("list_of_photos"){
+                            popUpTo("splash"){
+                                inclusive = true
+                            }
+                        }
                     }
                 }
                 composable(route = "list_of_photos") {
