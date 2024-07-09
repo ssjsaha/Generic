@@ -109,7 +109,6 @@ fun PhotoListComposable(
             LaunchedEffect(key1 = uiComposableState.isRefreshing) {
                 if (uiComposableState.isRefreshing) {
                     pullToRefreshState.startRefresh()
-
                 } else {
                     pullToRefreshState.endRefresh()
                 }

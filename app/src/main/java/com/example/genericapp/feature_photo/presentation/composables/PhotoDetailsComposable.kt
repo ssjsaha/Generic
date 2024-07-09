@@ -82,8 +82,7 @@ fun PhotoDetailsComposable(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
-                .verticalScroll(state = rememberScrollState())
-            ,
+                .verticalScroll(state = rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = if (uiComposableState.value.isLandscape) {
                 Arrangement.Center
@@ -97,11 +96,9 @@ fun PhotoDetailsComposable(
                 loading = {
                     imageLoadVerdict = ImageLoadVerdict.LOADING
                 },
-                error = {
-                    Image(
-                        painter = painterResource(id = R.drawable.error),
-                        contentDescription = "error image"
-                    )
+                onError = {
+                    imageLoadVerdict = ImageLoadVerdict.ERROR
+
                 },
                 onSuccess = {
                     imageLoadVerdict = ImageLoadVerdict.SUCCESS
@@ -120,9 +117,13 @@ fun PhotoDetailsComposable(
             }
 
         }
-        if(imageLoadVerdict == ImageLoadVerdict.LOADING) {
+        if (imageLoadVerdict == ImageLoadVerdict.LOADING) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 ImageDetailsShimmerLoader()
+            }
+        } else if (imageLoadVerdict == ImageLoadVerdict.ERROR) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Image(painter = painterResource(id = R.drawable.error), contentDescription = null)
             }
         }
     }
