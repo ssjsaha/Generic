@@ -1,7 +1,6 @@
 package com.example.genericapp.feature_photo.di
 
 import android.content.Context
-import android.util.DisplayMetrics
 import com.example.genericapp.feature_photo.data.Api
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

@@ -1,6 +1,5 @@
 package com.example.genericapp.feature_photo.data.repositores
 
-import android.util.Range
 import com.example.genericapp.feature_photo.data.Api
 import com.example.genericapp.feature_photo.domain.models.PhotoObject
 import com.example.genericapp.feature_photo.domain.repositories.PhotoListRepository
