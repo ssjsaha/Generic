@@ -71,7 +71,7 @@ class PhotoListViewModel @Inject constructor(
     @VisibleForTesting
     fun isLandscape(width: Long, height: Long) = width > height
 
-    fun getPhotoHeightAccordingToDevice(width: Long, height: Long): Point {
+    private fun getPhotoHeightAccordingToDevice(width: Long, height: Long): Point {
         val deviceWidth = displayMetrics.widthPixels
         val calculatedHeight = (height.toFloat() / width.toFloat()) * deviceWidth.toFloat()
         return Point(deviceWidth, calculatedHeight.toInt())
