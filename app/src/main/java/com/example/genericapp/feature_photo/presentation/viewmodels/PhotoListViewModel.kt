@@ -31,7 +31,6 @@ class PhotoListViewModel @Inject constructor(
     )
     val uiStateFlow = _uiStateFlow.asStateFlow()
 
-
     // ui state for photo details
     private val _photoDetailsUiState: MutableStateFlow<PhotoDetailsUiState> = MutableStateFlow(
         PhotoDetailsUiState()

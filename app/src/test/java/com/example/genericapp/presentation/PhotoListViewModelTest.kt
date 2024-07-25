@@ -50,20 +50,6 @@ class PhotoListViewModelTest {
         Dispatchers.resetMain()
     }
 
-    @Test
-    fun `on event with upload post with non null file test`() {
-        /* runTest {
-             val spyF = spyk(viewModel)
-             coEvery { repo.getPhotoList() } returns flowOf(Resource.Error("hayhay"))
-             spyF.getPhotoList()
-             spyF.uiStateFlow.test {
-                 val ans = awaitItem().photoList
-                 val error =  awaitItem().error
-                 Truth.assertThat(ans.size).isEqualTo(1)
-                 Truth.assertThat(error).contains("hayahay")
-             }
-         }*/
-    }
 
     @Test
     fun `is landscape returns true when width is greater than height`() {
@@ -83,7 +69,7 @@ class PhotoListViewModelTest {
     }
 
     @Test
-    fun `is landscape returns true when width is equal to height`() {
+    fun `is landscape returns false when width is equal to height`() {
         //width equal to height
         val width = 720L
         val height = 720L

@@ -129,3 +129,6 @@ dependencies {
 kapt {
     correctErrorTypes = true
 }
+
+// Portrait image: 23,31,35,57,67
+// Square image: 53
